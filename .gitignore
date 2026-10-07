@@ -70,3 +70,6 @@ docs/superpowers/
 # Build directory
 /target/
 
+
+# JVM crash logs from local debugging
+sdk/java/hs_err_pid*.log
