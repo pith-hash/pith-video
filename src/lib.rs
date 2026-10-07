@@ -38,22 +38,26 @@
 //! (`moof`/`mvex`) is refused by the demuxer with `Unsupported` before
 //! this crate sees a byte of media data.
 
-// `unsafe` is denied everywhere except `ffi`, the C ABI surface the
-// language SDKs bind through: raw pointers exist only at that boundary,
-// and every exported function is a documented `unsafe extern "C"` fn.
+// `unsafe` is denied everywhere except `ffi` (the C ABI surface the
+// language SDKs bind through) and `ffi_jni` (the JNI surface the Java
+// SDK binds through): raw pointers exist only at those boundaries, and
+// every exported function is a documented `unsafe extern` fn.
 #![deny(unsafe_code)]
 #![deny(missing_docs)]
+
+// The JNI surface is shaped like its no_std siblings and shares their
+// `alloc`-only imports.
+extern crate alloc;
 
 mod avcc;
 mod minhash;
 mod phash;
 
 pub mod ffi;
+mod ffi_jni;
 pub mod reference;
 
 use alloc::vec::Vec;
-
-extern crate alloc;
 
 use pith_digest::{Digest, Error, Result, sha256};
 use pith_h264::{Decoder, Frame, Limits as H264Limits};

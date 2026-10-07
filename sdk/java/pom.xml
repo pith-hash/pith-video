@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Java SDK for pith-video: JNI bindings to the suite cdylib
+  (pith_video.dll / libpith_video.so / libpith_video.dylib).
+
+  The tests replay every repository-root reference.json vector through
+  the real JVM and compare every pinned field hex-exact. Point
+  PITH_CDYLIB_DIR at a directory containing the built cdylib
+  (cargo build release) before running "mvn test".
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>hash.pith</groupId>
+  <artifactId>pith-video</artifactId>
+  <version>0.1.0</version>
+  <packaging>jar</packaging>
+
+  <name>pith-video</name>
+  <description>Java JNI bindings for pith-video: mp4/H.264 fingerprint streams, hex-exact against reference.json</description>
+  <url>https://github.com/pith-hash/pith-video</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>11</maven.compiler.release>
+  </properties>
+
+  <dependencies>
+    <!-- The single JSON dependency: reference.json vector replay. -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.11.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.10.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>

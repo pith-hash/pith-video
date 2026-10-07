@@ -115,8 +115,9 @@ pub unsafe extern "C" fn pith_video_free(ptr: *mut u8, len: usize) {
 
 /// The safe core of [`pith_video_fingerprint`]: decode, then
 /// serialize canonically. Decoding failures map to
-/// [`PITH_E_REJECTED`].
-fn fingerprint_and_serialize(bytes: &[u8]) -> Result<Vec<u8>, i32> {
+/// [`PITH_E_REJECTED`]. `pub(crate)`: the JNI surface
+/// (`ffi_jni`) routes through the same core.
+pub(crate) fn fingerprint_and_serialize(bytes: &[u8]) -> Result<Vec<u8>, i32> {
     let fp = decode(bytes, &Limits::default()).map_err(|_| PITH_E_REJECTED)?;
     Ok(canonical_bytes(&fp))
 }

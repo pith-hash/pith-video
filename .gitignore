@@ -50,6 +50,9 @@ __pycache__/
 sdk/python/build/
 *.egg-info/
 
+# Java SDK build scaffolding
+sdk/java/target/
+
 # Agent artifacts (not committed)
 .jules/
 .code-review-graph/
