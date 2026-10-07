@@ -1,9 +1,0 @@
-C:\Users\n24q02m-wpc\projects\.tmp-portvideo\pith-video\target\debug\deps\video-adcc754c6b0e6327.d: tests\video.rs Cargo.toml
-
-C:\Users\n24q02m-wpc\projects\.tmp-portvideo\pith-video\target\debug\deps\libvideo-adcc754c6b0e6327.rmeta: tests\video.rs Cargo.toml
-
-tests\video.rs:
-Cargo.toml:
-
-# env-dep:CLIPPY_ARGS=-D__CLIPPY_HACKERY__warnings__CLIPPY_HACKERY__
-# env-dep:CLIPPY_CONF_DIR

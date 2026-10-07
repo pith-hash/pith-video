@@ -4,7 +4,7 @@
 
 - Repo: `pith-hash/pith-video`
 - Description: Video fingerprints: mp4 demux, H.264 decode, 2 fps pHash frames and MinHash chain signature (zero-dep Rust)
-- License: Apache-2.0
+- License: MIT
 
 ## Build & Test
 
