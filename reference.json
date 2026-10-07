@@ -3,7 +3,7 @@
   "crate": "pith-video",
   "format_version": 1,
   "generator": "cargo run --bin gen-reference -- gen",
-  "description": "Hex-exact video-lane vectors for pith-video: sampled frame-pHash chains (64-bit hex), MinHash folds over the 128-word chain signature, tier-1 content digests, f64 facts as IEEE-754 bits and decode error kinds over the committed fixtures and inline hostile inputs.",
+  "description": "Hex-exact video-lane vectors for pith-video: sampled frame-pHash chains (64-bit hex, only where the DCT threshold margins clear the libm noise floor — flat sources keep their integer pins instead), MinHash folds over the 128-word chain signature, tier-1 content digests, f64 facts as IEEE-754 bits and decode error kinds over the committed fixtures and inline hostile inputs.",
   "vectors": [
     {
       "name": "a_128x96.mp4",
@@ -13,6 +13,7 @@
       "width": 128,
       "height": 96,
       "sampled_frames": 8,
+      "phash_hex_pinned": true,
       "frame_phashes_hex": [
         "ac798c770666768c",
         "ac798c772666668c",
@@ -41,6 +42,7 @@
       "width": 64,
       "height": 48,
       "sampled_frames": 8,
+      "phash_hex_pinned": true,
       "frame_phashes_hex": [
         "ac798c7786266e8c",
         "ac798c7786266e8c",
@@ -69,6 +71,7 @@
       "width": 64,
       "height": 48,
       "sampled_frames": 8,
+      "phash_hex_pinned": true,
       "frame_phashes_hex": [
         "ac798c7786266e8c",
         "ac798c7786266e8c",
@@ -97,6 +100,7 @@
       "width": 64,
       "height": 48,
       "sampled_frames": 8,
+      "phash_hex_pinned": true,
       "frame_phashes_hex": [
         "ee718c57c62626ac",
         "ae798c57c62626ac",
@@ -125,6 +129,7 @@
       "width": 64,
       "height": 48,
       "sampled_frames": 8,
+      "phash_hex_pinned": true,
       "frame_phashes_hex": [
         "e48d97b23c699326",
         "ec8d97323c699326",
@@ -153,6 +158,7 @@
       "width": 64,
       "height": 48,
       "sampled_frames": 8,
+      "phash_hex_pinned": true,
       "frame_phashes_hex": [
         "8aa277ab8a5570ab",
         "88aa77ab8a5551ab",
@@ -181,6 +187,7 @@
       "width": 64,
       "height": 48,
       "sampled_frames": 8,
+      "phash_hex_pinned": true,
       "frame_phashes_hex": [
         "f5398a2a91c497f2",
         "fc3d88369f42984d",
@@ -209,6 +216,7 @@
       "width": 64,
       "height": 48,
       "sampled_frames": 3,
+      "phash_hex_pinned": true,
       "frame_phashes_hex": [
         "ac79847786666e8c",
         "ac798c7786466e8c",
@@ -232,9 +240,9 @@
       "width": 32,
       "height": 24,
       "sampled_frames": 1,
-      "frame_phashes_hex": [
-        "d7b428d700d2d6d6"
-      ],
+      "phash_hex_pinned": false,
+      "frame_phashes_hex": [],
+      "phash_pin_reason": "solid-color source: DCT thresholds sit at the subnormal noise floor, so the hash bits are libm-sensitive; per-platform verification lives in tests/video.rs",
       "minhash_word_0": "0db99a205bdccd58",
       "minhash_word_1": "f868a919a7907f2f",
       "minhash_fnv1a64": "5e1edc44eab35455",
@@ -253,9 +261,9 @@
       "width": 16,
       "height": 16,
       "sampled_frames": 1,
-      "frame_phashes_hex": [
-        "d7c420d700d2d5d7"
-      ],
+      "phash_hex_pinned": false,
+      "frame_phashes_hex": [],
+      "phash_pin_reason": "solid-color source: DCT thresholds sit at the subnormal noise floor, so the hash bits are libm-sensitive; per-platform verification lives in tests/video.rs",
       "minhash_word_0": "7ae3a67973909d32",
       "minhash_word_1": "0617155fffa44122",
       "minhash_fnv1a64": "eeda1631d6cfba81",
@@ -274,6 +282,7 @@
       "width": 32,
       "height": 24,
       "sampled_frames": 1,
+      "phash_hex_pinned": true,
       "frame_phashes_hex": [
         "ce8e3eae8ea6888a"
       ],
