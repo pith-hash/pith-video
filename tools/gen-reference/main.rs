@@ -388,23 +388,28 @@ and inline hostile inputs.\",\n",
                 } else {
                     String::new()
                 };
+                // A stable vector pins the frame hashes AND the MinHash
+                // fold over them. An unstable (solid-color) vector pins
+                // nothing derived from decoded pixels - both the hashes
+                // and the fold are libm-sensitive there - only
+                // container- and byte-level facts.
                 let phash_fields = if stable {
                     format!(
-                        "      \"phash_hex_pinned\": true,\n      \"frame_phashes_hex\": [\n{phashes}\n      ],\n"
+                        "      \"phash_hex_pinned\": true,\n      \"frame_phashes_hex\": [\n{phashes}\n      ],\n      \"minhash_word_0\": \"{}\",\n      \"minhash_word_1\": \"{}\",\n      \"minhash_fnv1a64\": \"{}\",\n      \"minhash_sha256\": \"{}\",\n",
+                        hex64(m.minhash.first),
+                        hex64(m.minhash.second),
+                        hex64(m.minhash.fnv1a64),
+                        m.minhash.sha256
                     )
                 } else {
-                    "      \"phash_hex_pinned\": false,\n      \"frame_phashes_hex\": [],\n      \"phash_pin_reason\": \"solid-color source: DCT thresholds sit at the subnormal noise floor, so the hash bits are libm-sensitive; per-platform verification lives in tests/video.rs\",\n".to_owned()
+                    "      \"phash_hex_pinned\": false,\n      \"frame_phashes_hex\": [],\n      \"phash_pin_reason\": \"solid-color source: DCT thresholds sit at the subnormal noise floor, so the hash bits are libm-sensitive and the MinHash fold over them is equally platform-sensitive; per-platform verification lives in tests/video.rs\",\n      \"minhash_word_0\": null,\n      \"minhash_word_1\": null,\n      \"minhash_fnv1a64\": null,\n      \"minhash_sha256\": null,\n"
+                        .to_owned()
                 };
-                let fnv_hex = hex64(m.minhash.fnv1a64);
                 vectors.push(format!(
-                    "    {{\n      \"name\": \"{name}\",\n      \"input_kind\": \"fixture-file\",\n      \"input_path\": \"{path}\",\n      \"input_sha256\": \"{input_sha}\",\n      \"width\": {},\n      \"height\": {},\n      \"sampled_frames\": {},\n{phash_fields}      \"minhash_word_0\": \"{}\",\n      \"minhash_word_1\": \"{}\",\n      \"minhash_fnv1a64\": \"{}\",\n      \"minhash_sha256\": \"{}\",\n      \"content_digest_sha256\": \"{}\",\n      \"value_kind\": \"f64-ieee754-bits-hex\",\n      \"policy\": \"exact\",\n      \"duration_bits\": \"{}\",\n      \"fps_sampled_bits\": \"{}\"\n    }}",
+                    "    {{\n      \"name\": \"{name}\",\n      \"input_kind\": \"fixture-file\",\n      \"input_path\": \"{path}\",\n      \"input_sha256\": \"{input_sha}\",\n      \"width\": {},\n      \"height\": {},\n      \"sampled_frames\": {},\n{phash_fields}      \"content_digest_sha256\": \"{}\",\n      \"value_kind\": \"f64-ieee754-bits-hex\",\n      \"policy\": \"exact\",\n      \"duration_bits\": \"{}\",\n      \"fps_sampled_bits\": \"{}\"\n    }}",
                     m.width,
                     m.height,
                     m.decoded_frames,
-                    hex64(m.minhash.first),
-                    hex64(m.minhash.second),
-                    fnv_hex,
-                    m.minhash.sha256,
                     m.content_digest,
                     m.duration_bits,
                     m.fps_sampled_bits,
