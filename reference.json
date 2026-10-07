@@ -1,0 +1,365 @@
+{
+  "suite": "pith",
+  "crate": "pith-video",
+  "format_version": 1,
+  "generator": "cargo run --bin gen-reference -- gen",
+  "description": "Hex-exact video-lane vectors for pith-video: sampled frame-pHash chains (64-bit hex), MinHash folds over the 128-word chain signature, tier-1 content digests, f64 facts as IEEE-754 bits and decode error kinds over the committed fixtures and inline hostile inputs.",
+  "vectors": [
+    {
+      "name": "a_128x96.mp4",
+      "input_kind": "fixture-file",
+      "input_path": "tests/fixtures/a_128x96.mp4",
+      "input_sha256": "be857130d02561ed0c9b7776821cf798a4dcbdb392afd31f6a4767270b16325d",
+      "width": 128,
+      "height": 96,
+      "sampled_frames": 8,
+      "frame_phashes_hex": [
+        "ac798c770666768c",
+        "ac798c772666668c",
+        "ac7984772e2e3e84",
+        "ac798c77262e4ea4",
+        "ae598c778e26278c",
+        "ac718c772e2e668c",
+        "ec718c7f2e2e2684",
+        "ec59847f2e266e84"
+      ],
+      "minhash_word_0": "0aae0bfe242ad9a4",
+      "minhash_word_1": "5ce10fa4fcf14480",
+      "minhash_fnv1a64": "b3c0498e326b0a1d",
+      "minhash_sha256": "c0ec896cf4b91bcbd4ab5a1e4c0e977ea6d533a88003fcf3ddb3ff0f1758871c",
+      "content_digest_sha256": "83fd9ca05414232688771f3024698fea51e48d566d4be898dc05cbff8e7457d4",
+      "value_kind": "f64-ieee754-bits-hex",
+      "policy": "exact",
+      "duration_bits": "4010000000000000",
+      "fps_sampled_bits": "4000000000000000"
+    },
+    {
+      "name": "a_64x48.mov",
+      "input_kind": "fixture-file",
+      "input_path": "tests/fixtures/a_64x48.mov",
+      "input_sha256": "5340a9bb58a97b3238ac1595f996c8db306ec008b5b279c4befee5e603bb513c",
+      "width": 64,
+      "height": 48,
+      "sampled_frames": 8,
+      "frame_phashes_hex": [
+        "ac798c7786266e8c",
+        "ac798c7786266e8c",
+        "ac598477ae2e2e8c",
+        "ac598c77a60e4eac",
+        "ae598c778e262e8c",
+        "ac718c77a62e2e8c",
+        "ec718c77a62e2e84",
+        "ec71847fa62e2e84"
+      ],
+      "minhash_word_0": "2a9354939727ac5d",
+      "minhash_word_1": "1e5c6477877bcc12",
+      "minhash_fnv1a64": "6e059b2cbf0e28ad",
+      "minhash_sha256": "3d261b0e223e4645061b7ce721198f64577a1546ed8fe4e8d85d879ae6c010ac",
+      "content_digest_sha256": "72a4bbfd76647b2dc9ee06d8d6975ae73ff1ba2e789877dbc3ca88e37fc718aa",
+      "value_kind": "f64-ieee754-bits-hex",
+      "policy": "exact",
+      "duration_bits": "4010000000000000",
+      "fps_sampled_bits": "4000000000000000"
+    },
+    {
+      "name": "a_64x48.mp4",
+      "input_kind": "fixture-file",
+      "input_path": "tests/fixtures/a_64x48.mp4",
+      "input_sha256": "fe641153a25f55b84a67a5f148fdea731d035a90a1d1a9b460408cf892b3589a",
+      "width": 64,
+      "height": 48,
+      "sampled_frames": 8,
+      "frame_phashes_hex": [
+        "ac798c7786266e8c",
+        "ac798c7786266e8c",
+        "ac598477ae2e2e8c",
+        "ac598c77a60e4eac",
+        "ae598c778e262e8c",
+        "ac718c77a62e2e8c",
+        "ec718c77a62e2e84",
+        "ec71847fa62e2e84"
+      ],
+      "minhash_word_0": "2a9354939727ac5d",
+      "minhash_word_1": "1e5c6477877bcc12",
+      "minhash_fnv1a64": "6e059b2cbf0e28ad",
+      "minhash_sha256": "3d261b0e223e4645061b7ce721198f64577a1546ed8fe4e8d85d879ae6c010ac",
+      "content_digest_sha256": "72a4bbfd76647b2dc9ee06d8d6975ae73ff1ba2e789877dbc3ca88e37fc718aa",
+      "value_kind": "f64-ieee754-bits-hex",
+      "policy": "exact",
+      "duration_bits": "4010000000000000",
+      "fps_sampled_bits": "4000000000000000"
+    },
+    {
+      "name": "a_crf40.mp4",
+      "input_kind": "fixture-file",
+      "input_path": "tests/fixtures/a_crf40.mp4",
+      "input_sha256": "44e60a8929b8a8b74da3591c498c42a0680402632d4c0388e8917b102ef552fa",
+      "width": 64,
+      "height": 48,
+      "sampled_frames": 8,
+      "frame_phashes_hex": [
+        "ee718c57c62626ac",
+        "ae798c57c62626ac",
+        "ec518c37ae262eac",
+        "ec518c37ae262eac",
+        "ae598c778e2e268c",
+        "ac518c778e2e2eac",
+        "ae518c7fae2e2684",
+        "ac518c7fae2e6684"
+      ],
+      "minhash_word_0": "2d0af32f862aaeb9",
+      "minhash_word_1": "11afa903ee203509",
+      "minhash_fnv1a64": "f4a07834c6b5b5d0",
+      "minhash_sha256": "9c78fa8cfc1050086710cfaf5a8b5a5f8e9e7187e5fc5c3f7d1634b63cde921a",
+      "content_digest_sha256": "bc37ed8bdab76768201c7732a2c2ccd231ff1ee2a839dc37be5315dd7103e505",
+      "value_kind": "f64-ieee754-bits-hex",
+      "policy": "exact",
+      "duration_bits": "4010000000000000",
+      "fps_sampled_bits": "4000000000000000"
+    },
+    {
+      "name": "b_64x48.mp4",
+      "input_kind": "fixture-file",
+      "input_path": "tests/fixtures/b_64x48.mp4",
+      "input_sha256": "7721c9352f71fdd3073f6e1b03da88906a8477d7dc29ba672ca75b14df20382e",
+      "width": 64,
+      "height": 48,
+      "sampled_frames": 8,
+      "frame_phashes_hex": [
+        "e48d97b23c699326",
+        "ec8d97323c699326",
+        "ec8d97924c6993a6",
+        "ec8d95924c69b366",
+        "ec8d95964c69b1a6",
+        "ec8d91964c69b1b6",
+        "eccd91964c69b127",
+        "e8cd91964c69b137"
+      ],
+      "minhash_word_0": "040002b262dfdbc6",
+      "minhash_word_1": "06417107449c17b8",
+      "minhash_fnv1a64": "0c4331cd83369169",
+      "minhash_sha256": "f6dc07ba8e8e11b599307950ac7f6632375aaa06e091892a4f9b5247c4eebb3d",
+      "content_digest_sha256": "7a45d68da84465c13a9715dfede190f3e6570142403ac6359b213f05d9209a02",
+      "value_kind": "f64-ieee754-bits-hex",
+      "policy": "exact",
+      "duration_bits": "4010000000000000",
+      "fps_sampled_bits": "4000000000000000"
+    },
+    {
+      "name": "c_64x48.mp4",
+      "input_kind": "fixture-file",
+      "input_path": "tests/fixtures/c_64x48.mp4",
+      "input_sha256": "b240265e2b4cf8ab212a3ce6611294c7e04ef716a8bb2d93c0e70c745c30d599",
+      "width": 64,
+      "height": 48,
+      "sampled_frames": 8,
+      "frame_phashes_hex": [
+        "8aa277ab8a5570ab",
+        "88aa77ab8a5551ab",
+        "88aa77ab8a5551ab",
+        "88aa77ab8a5551ab",
+        "888a7faa80757f8a",
+        "888a7faa80757f8a",
+        "888a7faa80757f8a",
+        "888a7faa80757f8a"
+      ],
+      "minhash_word_0": "1dfe1bd8fd2f29a1",
+      "minhash_word_1": "2232c66839844206",
+      "minhash_fnv1a64": "253535e1b362d8d9",
+      "minhash_sha256": "90195a2fbdc4e65b131c7682ef6684b22b93acaca4ae7d60cc3ad04a2de9cc57",
+      "content_digest_sha256": "da74fef1fcb050c0c565a64a580543de87e895fbe36c9a97ede2dce8de3a627c",
+      "value_kind": "f64-ieee754-bits-hex",
+      "policy": "exact",
+      "duration_bits": "4010000000000000",
+      "fps_sampled_bits": "4000000000000000"
+    },
+    {
+      "name": "d_64x48.mp4",
+      "input_kind": "fixture-file",
+      "input_path": "tests/fixtures/d_64x48.mp4",
+      "input_sha256": "591a8a8709506c1a53b6d24f2ebd4e50d73625d58f00922545aad09f11f5d988",
+      "width": 64,
+      "height": 48,
+      "sampled_frames": 8,
+      "frame_phashes_hex": [
+        "f5398a2a91c497f2",
+        "fc3d88369f42984d",
+        "ff2f90721f21984c",
+        "fd3a87509a43986b",
+        "e43c9572be373250",
+        "ea3c1732b77291c2",
+        "e83c9e34933693c6",
+        "e1949b66644b769a"
+      ],
+      "minhash_word_0": "19632508297559fa",
+      "minhash_word_1": "19d40592f5512f8e",
+      "minhash_fnv1a64": "50798c7d869af683",
+      "minhash_sha256": "f0ad88c055b7d3502fa4f1f3cb8d50d558a129a84103e8380c05f6e28488fe34",
+      "content_digest_sha256": "cabc5c361a5b39ba41b7ad7fec667c37c51f86820c67d3fdf6fc6ffe35ac0e5c",
+      "value_kind": "f64-ieee754-bits-hex",
+      "policy": "exact",
+      "duration_bits": "4010000000000000",
+      "fps_sampled_bits": "4000000000000000"
+    },
+    {
+      "name": "high_64x48.mp4",
+      "input_kind": "fixture-file",
+      "input_path": "tests/fixtures/high_64x48.mp4",
+      "input_sha256": "405ac3df8af9e0c58c498900803bf19dcde9e50c85ed31689a99f4872bc7b1f0",
+      "width": 64,
+      "height": 48,
+      "sampled_frames": 3,
+      "frame_phashes_hex": [
+        "ac79847786666e8c",
+        "ac798c7786466e8c",
+        "ac798477c6466e8c"
+      ],
+      "minhash_word_0": "dd39d46dc6f1fb72",
+      "minhash_word_1": "8dec70d6162e5c8c",
+      "minhash_fnv1a64": "b2d2022b8b467a54",
+      "minhash_sha256": "f568d6e23775ac73f895bf2578e2a62c388388744279be4aa765d1b483b819c9",
+      "content_digest_sha256": "724f8030b2ebe5812add83c8befb2f9e2661ac981706c5c4512b486c4efc3ba7",
+      "value_kind": "f64-ieee754-bits-hex",
+      "policy": "exact",
+      "duration_bits": "3ff0000000000000",
+      "fps_sampled_bits": "4008000000000000"
+    },
+    {
+      "name": "short_32x24.mp4",
+      "input_kind": "fixture-file",
+      "input_path": "tests/fixtures/short_32x24.mp4",
+      "input_sha256": "4909b7404c6f5c56d358cccf6d589fead832c5c7577e97e328b040006dbd4521",
+      "width": 32,
+      "height": 24,
+      "sampled_frames": 1,
+      "frame_phashes_hex": [
+        "d7b428d700d2d6d6"
+      ],
+      "minhash_word_0": "0db99a205bdccd58",
+      "minhash_word_1": "f868a919a7907f2f",
+      "minhash_fnv1a64": "5e1edc44eab35455",
+      "minhash_sha256": "65053ff14dcf38e31cdcc87f341854ace48ddd13e6637a03599a01a19246fe59",
+      "content_digest_sha256": "bbec284b4f832bc22c0fcf596e34e6b72bd106a97bb2e36ce6a50e37f70a0cb1",
+      "value_kind": "f64-ieee754-bits-hex",
+      "policy": "exact",
+      "duration_bits": "3fd8000000000000",
+      "fps_sampled_bits": "4005555555555555"
+    },
+    {
+      "name": "tiny_16x16.mp4",
+      "input_kind": "fixture-file",
+      "input_path": "tests/fixtures/tiny_16x16.mp4",
+      "input_sha256": "eb750dd601c57bd372f6e0558c4a9facc05bef1d5d49276dad4dd984e3cc5703",
+      "width": 16,
+      "height": 16,
+      "sampled_frames": 1,
+      "frame_phashes_hex": [
+        "d7c420d700d2d5d7"
+      ],
+      "minhash_word_0": "7ae3a67973909d32",
+      "minhash_word_1": "0617155fffa44122",
+      "minhash_fnv1a64": "eeda1631d6cfba81",
+      "minhash_sha256": "7956cb2556d59c68d9bb27f4131819b4fbd36cb3667ef91200eb99fedfe9d9c1",
+      "content_digest_sha256": "7fda7d6261b49fc50318026ab4b7cc6357bcb718e11734507c3a3cd9bb9635da",
+      "value_kind": "f64-ieee754-bits-hex",
+      "policy": "exact",
+      "duration_bits": "3fe0000000000000",
+      "fps_sampled_bits": "4000000000000000"
+    },
+    {
+      "name": "two_32x24.mp4",
+      "input_kind": "fixture-file",
+      "input_path": "tests/fixtures/two_32x24.mp4",
+      "input_sha256": "d0ab1fc8eacf16a06d354f57f07fc75c008dcb23bee72f9b3b250523b48dc167",
+      "width": 32,
+      "height": 24,
+      "sampled_frames": 1,
+      "frame_phashes_hex": [
+        "ce8e3eae8ea6888a"
+      ],
+      "minhash_word_0": "51ad57e8bd1b802e",
+      "minhash_word_1": "d33b12035cb00e0e",
+      "minhash_fnv1a64": "168175e3d6a5af09",
+      "minhash_sha256": "9c86c85b9cc3615bcb637c8719ef908916d1a8fb8da036d7356ec5965c78bba6",
+      "content_digest_sha256": "e64a88f959852839a71e68c95445824811ef5f20aed62372183bcfe362138893",
+      "value_kind": "f64-ieee754-bits-hex",
+      "policy": "exact",
+      "duration_bits": "3fd0000000000000",
+      "fps_sampled_bits": "4010000000000000"
+    }
+  ],
+  "errors": [
+    {
+      "name": "fixture-a_frag.mp4",
+      "input_kind": "fixture-file",
+      "input_path": "tests/fixtures/a_frag.mp4",
+      "input_sha256": "85f2a5fba4b27a031cdf8a7a75291bd3900b9eb6339eb59322b9e943b0fc4822",
+      "error_kind": "Unsupported"
+    },
+    {
+      "name": "fixture-annexb_32x24.h264",
+      "input_kind": "fixture-file",
+      "input_path": "tests/fixtures/annexb_32x24.h264",
+      "input_sha256": "0c96019613ac8ac9e1b723ac04e2a159cb6d6ff5679be4d4afb19e9406b67d75",
+      "error_kind": "Truncated"
+    },
+    {
+      "name": "fixture-audioonly.mp4",
+      "input_kind": "fixture-file",
+      "input_path": "tests/fixtures/audioonly.mp4",
+      "input_sha256": "b450a2869107beb187eac60f546108866d7f059681f8b899f4a25b76ca71adb0",
+      "error_kind": "BadValue"
+    },
+    {
+      "name": "fixture-e_mp4v.mp4",
+      "input_kind": "fixture-file",
+      "input_path": "tests/fixtures/e_mp4v.mp4",
+      "input_sha256": "d7325b5341add0b1607371040a480c1115302ec370602a3b7fc52252c06e7eb2",
+      "error_kind": "Unsupported"
+    },
+    {
+      "name": "empty-input",
+      "input_kind": "inline-hex",
+      "input_hex": "",
+      "error_kind": "InvalidMagic"
+    },
+    {
+      "name": "random-bytes",
+      "input_kind": "inline-hex",
+      "input_hex": "abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab",
+      "error_kind": "Truncated"
+    },
+    {
+      "name": "truncated-box-head",
+      "input_kind": "inline-hex",
+      "input_hex": "000000186674797069736f6d",
+      "error_kind": "Truncated"
+    }
+  ],
+  "limits_errors": [
+    {
+      "name": "limits-max-input",
+      "input_path": "tests/fixtures/a_64x48.mp4",
+      "limits_override": "{\"max_input\": 6043}",
+      "error_kind": "TooLarge"
+    },
+    {
+      "name": "limits-max-duration",
+      "input_path": "tests/fixtures/a_64x48.mp4",
+      "limits_override": "{\"max_duration_s\": 3.5}",
+      "error_kind": "TooLarge"
+    },
+    {
+      "name": "limits-max-frames",
+      "input_path": "tests/fixtures/a_64x48.mp4",
+      "limits_override": "{\"max_frames\": 7}",
+      "error_kind": "TooLarge"
+    },
+    {
+      "name": "limits-max-decoded-frames",
+      "input_path": "tests/fixtures/a_64x48.mp4",
+      "limits_override": "{\"max_decoded_frames\": 2}",
+      "error_kind": "TooLarge"
+    }
+  ]
+}

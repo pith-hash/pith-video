@@ -1,0 +1,1 @@
+C:\Users\n24q02m-wpc\projects\.tmp-portvideo\pith-video\target\debug\libpith_video.rlib: C:\Users\n24q02m-wpc\projects\.tmp-portvideo\pith-video\src\avcc.rs C:\Users\n24q02m-wpc\projects\.tmp-portvideo\pith-video\src\lib.rs C:\Users\n24q02m-wpc\projects\.tmp-portvideo\pith-video\src\minhash.rs C:\Users\n24q02m-wpc\projects\.tmp-portvideo\pith-video\src\phash.rs

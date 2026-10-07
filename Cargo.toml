@@ -1,0 +1,33 @@
+[package]
+name = "pith-video"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+license = "MIT"
+repository = "https://github.com/pith-hash/pith-video"
+description = "Video fingerprints: mp4 demux, H.264 decode, 2 fps pHash frames and MinHash chain signature (zero-dep Rust)"
+readme = "README.md"
+categories = ["algorithms", "cryptography"]
+keywords = ["video", "phash", "minhash", "fingerprint", "hashing"]
+
+[dependencies]
+pith-digest = { git = "https://github.com/pith-hash/pith-digest.git", branch = "main" }
+pith-image = { git = "https://github.com/pith-hash/pith-image.git", branch = "main" }
+pith-text = { git = "https://github.com/pith-hash/pith-text.git", branch = "main" }
+pith-mp4 = { git = "https://github.com/pith-hash/pith-mp4.git", branch = "main" }
+pith-h264 = { git = "https://github.com/pith-hash/pith-h264.git", branch = "main" }
+
+# Vector generator: regenerates reference.json (CI verifies it is current,
+# CD ships it with the SDK artifacts).
+[[bin]]
+name = "gen-reference"
+path = "tools/gen-reference/main.rs"
+
+# Ported from the upstream kit: hostile-input tests (20 000 mp4 mutations,
+# every strict prefix of a valid file) under -O0 are unrealistically slow.
+[profile.test]
+opt-level = 2
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "deny"

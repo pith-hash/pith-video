@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "tier": 1,
+  "description": "Video fingerprints: mp4 demux, H.264 decode, 2 fps pHash frames and MinHash chain signature (zero-dep Rust)",
+  "homepage": "https://github.com/pith-hash/pith-video",
+  "topics": [
+    "rust",
+    "video",
+    "hashing"
+  ]
+}
