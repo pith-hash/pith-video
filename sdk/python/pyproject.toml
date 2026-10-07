@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pith-video"
+version = "0.1.0"
+description = "Video fingerprinting SDK: mp4/H.264 frame pHash chains and MinHash signatures via the pith-video Rust cdylib (ctypes, zero-dep)"
+license = "MIT"
+requires-python = ">=3.9"
+keywords = ["video", "phash", "minhash", "fingerprint", "hashing"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Rust",
+  "Topic :: Multimedia :: Video",
+]
+
+[project.urls]
+Repository = "https://github.com/pith-hash/pith-video"
+Homepage = "https://github.com/pith-hash/pith-video"
+
+[tool.setuptools]
+packages = ["pith_video"]
+
+[tool.setuptools.package-data]
+pith_video = ["*.dll", "*.dylib", "*.so"]

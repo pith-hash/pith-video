@@ -38,12 +38,18 @@
 //! (`moof`/`mvex`) is refused by the demuxer with `Unsupported` before
 //! this crate sees a byte of media data.
 
-#![forbid(unsafe_code)]
+// `unsafe` is denied everywhere except `ffi`, the C ABI surface the
+// language SDKs bind through: raw pointers exist only at that boundary,
+// and every exported function is a documented `unsafe extern "C"` fn.
+#![deny(unsafe_code)]
 #![deny(missing_docs)]
 
 mod avcc;
 mod minhash;
 mod phash;
+
+pub mod ffi;
+pub mod reference;
 
 use alloc::vec::Vec;
 
@@ -577,5 +583,44 @@ mod tests {
         );
         // And identical order is still perfect.
         assert_eq!(match_score(&a, &a), 1.0);
+    }
+
+    /// Annex-B re-framing edge cases: an empty sample is skipped, a
+    /// NAL length that runs past the payload is a named truncation at
+    /// every legal length size, and a complete 4-byte-length NAL
+    /// converts to a start-code-prefixed Annex-B unit.
+    #[test]
+    fn sample_to_annexb_edges() {
+        let mut out = Vec::new();
+        // Empty sample: skipped, not pushed.
+        assert!(!sample_to_annexb(&[], 4, &mut out).unwrap());
+        assert!(out.is_empty());
+        // Truncated NAL lengths: the declared size runs past the data.
+        assert!(sample_to_annexb(&[0x01], 2, &mut out).is_err());
+        assert!(sample_to_annexb(&[0x00, 0x00, 0x00], 4, &mut out).is_err());
+        // Complete 4-byte-length NAL: the length prefix becomes a
+        // 00 00 00 01 start code.
+        assert!(sample_to_annexb(&[0, 0, 0, 2, 0xAB, 0xCD], 4, &mut out).unwrap());
+        assert_eq!(out, vec![0, 0, 0, 1, 0xAB, 0xCD]);
+    }
+
+    /// `fingerprint` refuses a decode that yielded no frames, and a
+    /// zero duration degrades `fps_sampled` to 0.0 instead of
+    /// dividing by zero.
+    #[test]
+    fn fingerprint_edge_facts() {
+        let dig = Digest::from_bytes([0u8; 32]);
+        let empty =
+            fingerprint(Vec::new(), Some((16, 16)), 1.0, 8, &Limits::default()).unwrap_err();
+        assert!(matches!(empty, Error::BadValue(_)));
+        let row = Row {
+            pts: 0,
+            phash: 10,
+            digest: dig,
+        };
+        let fp = fingerprint(vec![row], Some((16, 16)), 0.0, 8, &Limits::default()).unwrap();
+        assert_eq!(fp.duration, 0.0);
+        assert_eq!(fp.fps_sampled, 0.0);
+        assert_eq!(fp.frame_hashes, vec![10]);
     }
 }

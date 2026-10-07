@@ -1,0 +1,33 @@
+{
+  "name": "@pith-hash/pith-video",
+  "version": "0.1.0",
+  "description": "Video fingerprinting SDK: mp4/H.264 frame pHash chains and MinHash signatures via the pith-video Rust cdylib (koffi, prebuilt)",
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "prebuilds/",
+    "reference.json"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "koffi": "^2.12.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pith-hash/pith-video.git",
+    "directory": "sdk/node"
+  },
+  "keywords": [
+    "video",
+    "phash",
+    "minhash",
+    "fingerprint",
+    "hashing"
+  ]
+}

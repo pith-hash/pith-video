@@ -33,7 +33,7 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use std::process::ExitCode;
 
-use pith_digest::{Error, fnv1a64, sha256};
+use pith_digest::{Error, sha256};
 use pith_video::{Limits, VideoFingerprint, decode};
 
 const FIXTURES_DIR: &str = "tests/fixtures";
@@ -60,6 +60,10 @@ pub(crate) fn hex64(v: u64) -> String {
     format!("{v:016x}")
 }
 
+// The MinHash fold (`MinHashFold`, `fold_minhash`) lives in the library
+// (`pith_video::reference`) so the generator and the C ABI surface
+// share one implementation.
+
 /// `f64` as 16-digit hex of the IEEE-754 bit pattern.
 pub(crate) fn f64_bits(v: f64) -> String {
     format!("{:016x}", v.to_bits())
@@ -69,29 +73,10 @@ pub(crate) fn repo_root() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR"))
 }
 
-/// The 128-word MinHash signature folded for compact transport: first
-/// two words verbatim, then FNV-1a 64 and SHA-256 over all 128
-/// little-endian words — the same fold shape the text lane pins.
-pub(crate) struct MinHashFold {
-    pub(crate) first: u64,
-    pub(crate) second: u64,
-    pub(crate) fnv1a64: u64,
-    pub(crate) sha256: String,
-}
-
-pub(crate) fn fold_minhash(sig: &[u64]) -> MinHashFold {
-    assert_eq!(sig.len(), 128, "signature length is part of the contract");
-    let mut le = Vec::with_capacity(sig.len() * 8);
-    for w in sig {
-        le.extend_from_slice(&w.to_le_bytes());
-    }
-    MinHashFold {
-        first: sig[0],
-        second: sig[1],
-        fnv1a64: fnv1a64(&le),
-        sha256: hex(sha256(&le).expect("sha256 of signature words").as_bytes()),
-    }
-}
+// The 128-word MinHash signature folded for compact transport: first
+// two words verbatim, then FNV-1a 64 and SHA-256 over all 128
+// little-endian words — the same fold shape the text lane pins.
+use pith_video::reference::{MinHashFold, fold_minhash};
 
 /// The kind name of an error, as the cross-SDK contract pins it. The
 /// kind is stable; the message text is not depended on.
@@ -585,6 +570,7 @@ fn main() -> ExitCode {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use pith_digest::fnv1a64;
     use std::sync::Mutex;
 
     /// Serializes every test that reads/writes reference.json: cargo
@@ -848,5 +834,33 @@ mod tests {
         assert!(json.contains("\"content_digest_sha256\""));
         assert!(json.contains("\"error_kind\": \"Unsupported\""));
         assert!(json.contains("\"error_kind\": \"TooLarge\""));
+    }
+
+    /// The margin guards return `INFINITY` (verdict: unpinnable) on
+    /// degenerate geometry and on inputs that never reach a decodable
+    /// AVC frame: non-BMFF bytes, an audio-only container, a non-AVC
+    /// codec.
+    #[test]
+    fn margin_guards_return_infinity_outside_the_pipeline() {
+        // Plane length mismatching the geometry: no image, no margin.
+        assert_eq!(frame_phash_margin(4, 4, &[1, 2, 3]), f64::INFINITY);
+        // Non-BMFF bytes never demux.
+        assert_eq!(phash_margin(&[0xAB; 64]), f64::INFINITY);
+        // A container whose only track is audio has no video track.
+        let audio_only = fs::read(
+            Path::new(env!("CARGO_MANIFEST_DIR"))
+                .join(FIXTURES_DIR)
+                .join("audioonly.mp4"),
+        )
+        .expect("fixture");
+        assert_eq!(phash_margin(&audio_only), f64::INFINITY);
+        // An MPEG-4 part 2 video track has no avcC record.
+        let mp4v = fs::read(
+            Path::new(env!("CARGO_MANIFEST_DIR"))
+                .join(FIXTURES_DIR)
+                .join("e_mp4v.mp4"),
+        )
+        .expect("fixture");
+        assert_eq!(phash_margin(&mp4v), f64::INFINITY);
     }
 }
