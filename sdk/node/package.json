@@ -1,6 +1,6 @@
 {
   "name": "@pith-hash/pith-video",
-  "version": "0.1.1-beta.1",
+  "version": "0.1.1",
   "description": "Video fingerprinting SDK: mp4/H.264 frame pHash chains and MinHash signatures via the pith-video Rust cdylib (koffi, prebuilt)",
   "license": "MIT",
   "main": "index.js",

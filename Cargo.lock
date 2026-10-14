@@ -53,7 +53,7 @@ source = "git+https://github.com/pith-hash/pith-unicode.git?branch=main#6eb95e6a
 
 [[package]]
 name = "pith-video"
-version = "0.1.1-beta.1"
+version = "0.1.1"
 dependencies = [
  "pith-digest",
  "pith-h264",
